@@ -11,4 +11,14 @@ The included CloudFormation template contains a custom resource lambda to enable
 
 aws cloudformation package --template-file ./S3BlockPublicAccessCFN.yml --s3-bucket <S3_BUCKET_NAME> --output-template ./pkgd-cfn.yml
 
-aws cloudformation deploy --template-file ./pkgd-cfn.yml --stack-name S3BucketBlockPublicAccess --capabilities CAPABILITY_IAM
+aws cloudformation deploy --template-file ./pkgd-cfn.yml --stack-name S3BlockPublicAccess --capabilities CAPABILITY_IAM
+
+# Template Parameters
+S3 Block Public access has four settings as below that each can be turned on/off via the cloudformation template. By default all four of these settings will be turned on if the stack is deployed with default settings.
+
+- S3BlockPublicAcls : Block new public ACLs and uploading public objects 
+- S3IgnorePublicAcls : Remove public access granted through public ACLs 
+- S3BlockPublicPolicy : Block new public bucket policies 
+- S3RestrictPublicBuckets: Block public and cross-account access to buckets that have public policies
+
+More info about each of these settings can be found in S3 [documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html) as well as this [blog post](https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/) 
