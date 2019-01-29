@@ -9,6 +9,6 @@ The included CloudFormation template contains a custom resource lambda to enable
 - Decide the bucket where you want to upload the lambda function code base 
 - Run the following commands to package the template and deploy
 
-# aws cloudformation package --template-file ./S3BlockPublicAccessCFN.yml --s3-bucket <S3_BUCKET_NAME> --output-template ./pkgd-cfn.yml
-# aws cloudformation deploy --template-file ./pkgd-cfn.yml --stack-name S3BucketBlockPublicAccess --capabilities CAPABILITY_IAM
+aws cloudformation package --template-file ./S3BlockPublicAccessCFN.yml --s3-bucket <S3_BUCKET_NAME> --output-template ./pkgd-cfn.yml
 
+aws cloudformation deploy --template-file ./pkgd-cfn.yml --stack-name S3BucketBlockPublicAccess --capabilities CAPABILITY_IAM
